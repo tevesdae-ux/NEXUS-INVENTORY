@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nexus Inventory System</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: '#0f172a', // slate-900
+              secondary: '#334155', // slate-700
+              accent: '#3b82f6', // blue-500
+              success: '#10b981', // emerald-500
+              warning: '#f59e0b', // amber-500
+              danger: '#ef4444', // red-500
+            }
+          }
+        }
+      }
+    </script>
+    <style>
+      /* Custom scrollbar for better aesthetics */
+      ::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #f1f5f9; 
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #cbd5e1; 
+        border-radius: 4px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #94a3b8; 
+      }
+
+      /* PHYSICAL PRINT STYLES for 20x15 cm Receipt (Landscape) */
+      @media print {
+        @page {
+          size: 20cm 15cm landscape;
+          margin: 0 !important; /* Removes browser headers/footers */
+        }
+        
+        /* Hide the entire web interface */
+        body {
+          visibility: hidden !important;
+          background: white !important;
+          margin: 0 !important;
+          padding: 0 !important;
+        }
+
+        /* Specifically enable the template and ALL its contents */
+        #physical-receipt-template {
+          visibility: visible !important;
+          display: block !important;
+          position: absolute !important;
+          left: 0 !important;
+          top: 0 !important;
+          width: 20cm !important;
+          height: 15cm !important;
+          background: white !important;
+          color: black !important;
+        }
+
+        #physical-receipt-template * {
+          visibility: visible !important;
+          color: black !important;
+          border-color: black !important;
+        }
+
+        /* Ensure tables render borders correctly in print */
+        #physical-receipt-template table {
+          border-collapse: collapse !important;
+        }
+      }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+  <script type="importmap">
+{
+  "imports": {
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+    "lucide-react": "https://aistudiocdn.com/lucide-react@^0.554.0",
+    "react/": "https://aistudiocdn.com/react@^19.2.0/",
+    "react": "https://aistudiocdn.com/react@^19.2.0",
+    "@google/genai": "https://aistudiocdn.com/@google/genai@^1.30.0",
+    "recharts": "https://aistudiocdn.com/recharts@^3.5.0"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+  <body class="bg-slate-50 text-slate-900 antialiased font-sans">
+    <div id="root"></div>
+  <script type="module" src="/index.tsx"></script>
+</body>
+</html>
